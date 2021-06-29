@@ -46,6 +46,89 @@ class LoginTest(unittest.TestCase):
         print("Estoy dentro de la página de My account")
 
 
+    def test_Login_failed_incorrect_username(self):
+        driver = self.driver
+        driver.get("https://automationteststore.com/")
+        time.sleep(2)
+        lp = LandingPage(driver)
+        lp.click_Go_Login()
+        time.sleep(2)
+        logpa = LoginPage(driver)
+        time.sleep(2)
+        logpa.submit_Username("gonza")
+        time.sleep(2)
+        logpa.submit_Password("Chicharito10")
+        time.sleep(2)
+        logpa.click_Submit_Sign_In()
+        time.sleep(2)
+        x = logpa.show_error_username_password()
+        print(x)
+        assert x == '×\nError: Incorrect login or password provided.'
+        print("Error al ingresar un username incorrecto")
+
+
+    def test_Login_failed_without_username(self):
+        driver = self.driver
+        driver.get("https://automationteststore.com/")
+        time.sleep(2)
+        lp = LandingPage(driver)
+        lp.click_Go_Login()
+        time.sleep(2)
+        logpa = LoginPage(driver)
+        time.sleep(2)
+        logpa.submit_Password("Chicharito10")
+        time.sleep(2)
+        logpa.click_Submit_Sign_In()
+        time.sleep(2)
+        x = logpa.show_error_username_password()
+        print(x)
+        assert x == '×\nError: Incorrect login or password provided.'
+        print("Error al no ingresar un username")
+
+
+
+    def test_Login_failed_incorrect_password(self):
+        driver = self.driver
+        driver.get("https://automationteststore.com/")
+        time.sleep(2)
+        lp = LandingPage(driver)
+        lp.click_Go_Login()
+        time.sleep(2)
+        logpa = LoginPage(driver)
+        time.sleep(2)
+        logpa.submit_Username("gonza_mol")
+        time.sleep(2)
+        logpa.submit_Password("Chicha")
+        time.sleep(2)
+        logpa.click_Submit_Sign_In()
+        time.sleep(2)
+        x = logpa.show_error_username_password()
+        print(x)
+        assert x == '×\nError: Incorrect login or password provided.'
+        print("Error al ingresar una password incorrecta")
+
+
+
+    def test_Login_failed_without_password(self):
+        driver = self.driver
+        driver.get("https://automationteststore.com/")
+        time.sleep(2)
+        lp = LandingPage(driver)
+        lp.click_Go_Login()
+        time.sleep(2)
+        logpa = LoginPage(driver)
+        time.sleep(2)
+        logpa.submit_Username("gonza_mol")
+        time.sleep(2)
+        logpa.click_Submit_Sign_In()
+        time.sleep(2)
+        x = logpa.show_error_username_password()
+        print(x)
+        assert x == '×\nError: Incorrect login or password provided.'
+        print("Error al no ingresar una password")
+
+
+
 
     @classmethod
     def tearDownClass(cls):
@@ -55,4 +138,4 @@ class LoginTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Reports'), verbosity=2)
+     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Reports'), verbosity=1)

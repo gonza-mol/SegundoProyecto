@@ -20,6 +20,21 @@ class CreateUserPageLocators():
     btn_continue_register3 = (By.CSS_SELECTOR, "#maincontainer>div>div.col-md-9.col-xs-12.mt20>div>div>section>a")
 
 
+    #locators para cuando no ingreso alguno o ninguno de los campos mandatorios
+    label_mandatory_field = (By.CSS_SELECTOR, "#maincontainer>div>div>div>div.alert.alert-error.alert-danger")
+    label_mandatory_First_Name = (By.CSS_SELECTOR, "#AccountFrm>div:nth-child(5)>fieldset>div:nth-child(1)>span")
+    label_mandatory_Last_Name = (By.CSS_SELECTOR, "#AccountFrm>div:nth-child(5)>fieldset>div:nth-child(2)>span")
+    label_mandatory_Email = (By.CSS_SELECTOR, "#AccountFrm>div:nth-child(5)>fieldset>div:nth-child(3)>span")
+    label_mandatory_Address1 = (By.CSS_SELECTOR, "#AccountFrm>div:nth-child(7)>fieldset>div:nth-child(2)>span")
+    label_mandatory_City = (By.CSS_SELECTOR, "#AccountFrm>div:nth-child(7)>fieldset>div:nth-child(4)>span")
+    label_mandatory_Region = (By.CSS_SELECTOR, "#AccountFrm>div:nth-child(7)>fieldset>div:nth-child(5)>span")
+    label_mandatory_Zipcode = (By.CSS_SELECTOR, "#AccountFrm>div:nth-child(7)>fieldset>div:nth-child(6)>span")
+    label_mandatory_Login_Name = (By.CSS_SELECTOR, "#AccountFrm>div:nth-child(9)>fieldset>div:nth-child(1)>span")
+    label_mandatory_Password = (By.CSS_SELECTOR, "#AccountFrm>div:nth-child(9)>fieldset>div:nth-child(2)>span")
+
+    #locator para cuando quiero crear una cuenta de un usuario ya existente
+    label_existing_user = (By.CSS_SELECTOR, "#maincontainer>div>div>div>div.alert.alert-error.alert-danger")
+
 
 class CreateUserPage():
 
@@ -68,6 +83,40 @@ class CreateUserPage():
     def create_Policy(self):
         self.driver.find_element(*CreateUserPageLocators.check_box_policy).click()
 
+    def submit_btn_Continue2(self):
+        self.driver.find_element(*CreateUserPageLocators.btn_continue_register2).click()
 
+    #acá van todos los métodos para los mensajes de alerta
+    def show_error_Mandatory_Field(self):
+        return self.driver.find_element(*CreateUserPageLocators.label_mandatory_field).text
 
+    def show_Mandatory_Field_First_Name(self):
+        return self.driver.find_element(*CreateUserPageLocators.label_mandatory_First_Name).text
 
+    def show_Mandatory_Field_Last_Name(self):
+        return self.driver.find_element(*CreateUserPageLocators.label_mandatory_Last_Name).text
+
+    def show_Mandatory_Field_Email(self):
+        return self.driver.find_element(*CreateUserPageLocators.label_mandatory_Email).text
+
+    def show_Mandatory_Field_Address(self):
+        return self.driver.find_element(*CreateUserPageLocators.label_mandatory_Address1).text
+
+    def show_Mandatory_Field_City(self):
+        return self.driver.find_element(*CreateUserPageLocators.label_mandatory_City).text
+
+    def show_Mandatory_Field_Region(self):
+        return self.driver.find_element(*CreateUserPageLocators.label_mandatory_Region).text
+
+    def show_Mandatory_Field_Zipcode(self):
+        return self.driver.find_element(*CreateUserPageLocators.label_mandatory_Zipcode).text
+
+    def show_Mandatory_Field_LoginName(self):
+        return self.driver.find_element(*CreateUserPageLocators.label_mandatory_Login_Name).text
+
+    def show_Mandatory_Field_Password(self):
+        return self.driver.find_element(*CreateUserPageLocators.label_mandatory_Password).text
+
+    #método para ver un usuario ya existente
+    def show_Existing_User_Message(self):
+        return self.driver.find_element(*CreateUserPageLocators.label_existing_user).text

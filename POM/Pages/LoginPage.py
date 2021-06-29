@@ -4,10 +4,7 @@ class LoginPageLocators():
     txt_username = (By.ID, "loginFrm_loginname")
     txt_password = (By.ID, "loginFrm_password")
     btn_sign_in = (By.CSS_SELECTOR, "#loginFrm>fieldset>button")
-    #check_box_register = (By.ID, "accountFrm_accountregister")
-    #btn_continue_register = (By.CSS_SELECTOR, ".btn.btn-orange.pull-right:nth-child(3)")
-    label_incorrect_username = (By.XPATH, "/html/body/div/div[2]/div/div/div/div[1]")
-
+    label_incorrect_username = (By.CSS_SELECTOR, "#maincontainer>div>div>div>div.alert.alert-error.alert-danger")
     check_box_register = (By.ID, "accountFrm_accountregister")
     btn_continue_register1 = (By.CSS_SELECTOR, ".btn.btn-orange.pull-right:nth-child(3)")
 
@@ -33,7 +30,7 @@ class LoginPage():
         self.driver.find_element(*LoginPageLocators.check_box_register).click()
 
     def click_Continue_Registration(self):
-        self.driver.find_element(*LoginPageLocators.btn_continue_register).click()
+        self.driver.find_element(*LoginPageLocators.btn_continue_register1).click()
 
     def show_error_username_password(self):
         return self.driver.find_element(*LoginPageLocators.label_incorrect_username).text
