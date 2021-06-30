@@ -44,11 +44,11 @@ class CreateUser(unittest.TestCase):
         #Objeto creado de CreateUserPage
         account = CreateUserPage(driver)
         time.sleep(2)
-        account.create_First_Name("Marcos")
+        account.create_First_Name("Luke")
         time.sleep(2)
-        account.create_Last_Name("Zamora")
+        account.create_Last_Name("Cornejo")
         time.sleep(2)
-        account.create_Email("Marcos.Zamora@darwoft.com")
+        account.create_Email("Luke.Cornejo@darwoft.com")
         time.sleep(2)
         account.create_Address1("Sol de Mayo 550")
         time.sleep(2)
@@ -60,7 +60,7 @@ class CreateUser(unittest.TestCase):
         time.sleep(2)
         account.create_Region("Cordoba")
         time.sleep(2)
-        account.create_Login_Name("Marcos_Zamora")
+        account.create_Login_Name("Luke_Cornejo")
         time.sleep(2)
         account.create_Create_Password("River10")
         time.sleep(2)
@@ -77,10 +77,12 @@ class CreateUser(unittest.TestCase):
         myaccount = MyAccountPage(driver)
         time.sleep(2)
         myaccount.continue_Account3()
-        x = MyAccountPage.verificar_Ingreso_Correcto()
+        time.sleep(2)
+        x = myaccount.verificar_Ingreso_Correcto2()
+        time.sleep(2)
         print(x)
         assert x == 'MY ACCOUNT'
-        print("Estoy en la página de My account")
+        print("Estoy en la página de My account, se ha creado exitosamente la cuenta del nuevo usuario")
 
 
 

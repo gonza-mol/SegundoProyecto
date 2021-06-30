@@ -5,7 +5,7 @@ class MyAccountPageLocators():
     text_my_account1 = (By.CSS_SELECTOR, "#maincontainer>div>div.col-md-9.col-xs-12.mt20>div>h1>span.subtext")
     text_my_account2 = (By.CSS_SELECTOR, "#maincontainer>div>div.col-md-9.col-xs-12.mt20>div>h1>span.maintext")
     btn_continue_register3 = (By.CSS_SELECTOR, "#maincontainer>div>div.col-md-9.col-xs-12.mt20>div>div>section>a")
-
+    text_account_created = (By.CSS_SELECTOR, "#maincontainer>div>div.col-md-9.col-xs-12.mt20>div>h1>span.maintext>i")
 
 class MyAccountPage():
 
@@ -20,3 +20,7 @@ class MyAccountPage():
 
     def continue_Account3(self):
         self.driver.find_element(*MyAccountPageLocators.btn_continue_register3).click()
+
+    def verificar_Created_Account_Success(self):
+        return self.driver.find_element(*MyAccountPageLocators.text_account_created).text
+
