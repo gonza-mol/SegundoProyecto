@@ -17,14 +17,11 @@ class LoginPage():
     def __init__(self, driver):
         self.driver = driver
 
-    def submit_Username(self, username):
+    def do_Login(self, username, password):
         self.driver.find_element(*LoginPageLocators.txt_username).send_keys(username)
-
-    def submit_Password(self, password):
         self.driver.find_element(*LoginPageLocators.txt_password).send_keys(password)
-
-    def click_Submit_Sign_In(self):
         self.driver.find_element(*LoginPageLocators.btn_sign_in).click()
+
 
     def click_Register_Account(self):
         self.driver.find_element(*LoginPageLocators.check_box_register).click()

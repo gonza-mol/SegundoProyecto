@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
+import time
 
 class CreateUserPageLocators():
 
@@ -41,20 +42,19 @@ class CreateUserPage():
     def __init__(self, driver):
         self.driver = driver
 
-    def create_First_Name(self, firstname):
+    def complete_All_Field_For_New_Account(self, firstname, lastname, email, address, city, zip, login_name, create_pass, confirm_pass):
         self.driver.find_element(*CreateUserPageLocators.label_first_name).send_keys(firstname)
-
-    def create_Last_Name(self, lastname):
         self.driver.find_element(*CreateUserPageLocators.label_last_name).send_keys(lastname)
-
-    def create_Email(self, email):
         self.driver.find_element(*CreateUserPageLocators.label_email).send_keys(email)
-
-    def create_Address1(self, address):
         self.driver.find_element(*CreateUserPageLocators.label_address_1).send_keys(address)
-
-    def create_City(self, city):
         self.driver.find_element(*CreateUserPageLocators.label_city).send_keys(city)
+        self.driver.find_element(*CreateUserPageLocators.label_zip_code).send_keys(zip)
+        self.driver.find_element(*CreateUserPageLocators.label_create_user_name).send_keys(login_name)
+        self.driver.find_element(*CreateUserPageLocators.label_create_password).send_keys(create_pass)
+        self.driver.find_element(*CreateUserPageLocators.label_confirm_password).send_keys(confirm_pass)
+        self.driver.find_element(*CreateUserPageLocators.check_box_suscribe).click()
+        self.driver.find_element(*CreateUserPageLocators.check_box_policy).click()
+
 
     def create_Country(self, country):
         sel = Select(self.driver.find_element(*CreateUserPageLocators.drop_down_country))
@@ -64,26 +64,7 @@ class CreateUserPage():
         sel = Select(self.driver.find_element(*CreateUserPageLocators.drop_down_region))
         sel.select_by_visible_text(region)
 
-
-    def create_Zip_Code(self, country):
-        self.driver.find_element(*CreateUserPageLocators.label_zip_code).send_keys(country)
-
-    def create_Login_Name(self, login_name):
-        self.driver.find_element(*CreateUserPageLocators.label_create_user_name).send_keys(login_name)
-
-    def create_Create_Password(self, create_pass):
-        self.driver.find_element(*CreateUserPageLocators.label_create_password).send_keys(create_pass)
-
-    def create_Confirm_Password(self, confirm_pass):
-        self.driver.find_element(*CreateUserPageLocators.label_confirm_password).send_keys(confirm_pass)
-
-    def create_Suscribe(self):
-        self.driver.find_element(*CreateUserPageLocators.check_box_suscribe).click()
-
-    def create_Policy(self):
-        self.driver.find_element(*CreateUserPageLocators.check_box_policy).click()
-
-    def submit_btn_Continue2(self):
+    def submit_Button_Continue_whitout_Mandatory_field(self):
         self.driver.find_element(*CreateUserPageLocators.btn_continue_register2).click()
 
     #acá van todos los métodos para los mensajes de alerta

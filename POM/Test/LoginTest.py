@@ -2,12 +2,13 @@ from _ast import Assert
 
 from selenium import webdriver
 import unittest
+
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__),"..",".."))
+
 import time
 
-from POM.Pages.CreateUserPage import CreateUserPage
 from POM.Pages.LandingPage import LandingPage
 from POM.Pages.LoginPage import LoginPage
 from POM.Pages.MyAccountPage import MyAccountPage
@@ -30,14 +31,9 @@ class LoginTest(unittest.TestCase):
         time.sleep(2)
         lp = LandingPage(driver)
         lp.click_Go_Login()
-        time.sleep(2)
         logpa = LoginPage(driver)
         time.sleep(2)
-        logpa.submit_Username("gonza_mol")
-        time.sleep(2)
-        logpa.submit_Password("Chicharito10")
-        time.sleep(2)
-        logpa.click_Submit_Sign_In()
+        logpa.do_Login("gonza_mol", "Chicharito10")
         time.sleep(2)
         account = MyAccountPage(driver)
         x = account.verificar_Ingreso_Correcto1()
@@ -55,11 +51,7 @@ class LoginTest(unittest.TestCase):
         time.sleep(2)
         logpa = LoginPage(driver)
         time.sleep(2)
-        logpa.submit_Username("gonza")
-        time.sleep(2)
-        logpa.submit_Password("Chicharito10")
-        time.sleep(2)
-        logpa.click_Submit_Sign_In()
+        logpa.do_Login("gonza", "Chicharito10")
         time.sleep(2)
         x = logpa.show_error_username_password()
         print(x)
@@ -75,10 +67,7 @@ class LoginTest(unittest.TestCase):
         lp.click_Go_Login()
         time.sleep(2)
         logpa = LoginPage(driver)
-        time.sleep(2)
-        logpa.submit_Password("Chicharito10")
-        time.sleep(2)
-        logpa.click_Submit_Sign_In()
+        logpa.do_Login("", "Chicharito10")
         time.sleep(2)
         x = logpa.show_error_username_password()
         print(x)
@@ -96,11 +85,7 @@ class LoginTest(unittest.TestCase):
         time.sleep(2)
         logpa = LoginPage(driver)
         time.sleep(2)
-        logpa.submit_Username("gonza_mol")
-        time.sleep(2)
-        logpa.submit_Password("Chicha")
-        time.sleep(2)
-        logpa.click_Submit_Sign_In()
+        logpa.do_Login("gonza_mol", "Chicharito")
         time.sleep(2)
         x = logpa.show_error_username_password()
         print(x)
@@ -117,10 +102,7 @@ class LoginTest(unittest.TestCase):
         lp.click_Go_Login()
         time.sleep(2)
         logpa = LoginPage(driver)
-        time.sleep(2)
-        logpa.submit_Username("gonza_mol")
-        time.sleep(2)
-        logpa.click_Submit_Sign_In()
+        logpa.do_Login("gonza_mol", "")
         time.sleep(2)
         x = logpa.show_error_username_password()
         print(x)
@@ -138,4 +120,4 @@ class LoginTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Reports'), verbosity=1)
+     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Reports'), verbosity=2)
