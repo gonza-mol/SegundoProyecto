@@ -30,7 +30,7 @@ class MakePurchase(unittest.TestCase):
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
 
-    def test_Purchase_Success(self):
+    def test_Purchase_Success_With_Validation(self):
         driver = self.driver
         driver.get("https://automationteststore.com/")
         time.sleep(2)
@@ -149,41 +149,6 @@ class MakePurchase(unittest.TestCase):
         print("\n")
         print(Fore.BLUE + "Estas en la página Home")
         time.sleep(2)
-
-
-    def test_Purchase_Success_With_Validations(self):
-        driver = self.driver
-        driver.get("https://automationteststore.com/")
-        time.sleep(2)
-        # ir a login page
-        lp = LandingPage(driver)
-        lp.click_Go_Login()
-        logpa = LoginPage(driver)
-        time.sleep(2)
-
-        # Esto permite el logueo
-        logpa.do_Login("gonza_mol", "Chicharito10")
-        time.sleep(2)
-
-        # Verifico que no tenga nada en el carrito de Compras
-        scp = ShoppingCartPage(driver)
-        my = MyAccountPage(driver)
-
-        my.seleccionar_Cart_Option()
-
-        try:
-            assert scp.check_Label_Without_Element() == 'Your shopping cart is empty!\nContinue'
-            my.seleccionar_Producto_Makeup()
-        except:
-            scp.clean_Shopping_Cart()
-            print("Había un producto seleccionado con anterioridad, se va eliminar el mismo")
-            my.seleccionar_Producto_Makeup()
-
-        time.sleep(2)
-        lip = LipsPage(driver)
-        lip.add_Cart1()
-        time.sleep(2)
-
 
 
 
