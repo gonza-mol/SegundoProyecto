@@ -1,3 +1,4 @@
+import logging
 from _ast import Assert
 
 from selenium import webdriver
@@ -54,10 +55,13 @@ class MakePurchase(unittest.TestCase):
             assert scp.check_Label_Without_Element() == 'Your shopping cart is empty!\nContinue'
             my.seleccionar_Producto_Makeup()
         except:
-            scp.clean_Shopping_Cart()
-            print("Había un producto seleccionado con anterioridad, se va eliminar el mismo")
+            #scp.clean_Shopping_Cart()
+            print(Fore.RED + "La cantidad de Productos a eliminar del carrito es: " + str(scp.contar_Elementos_Eliminados()))
+            scp.clean_List_Of_Products()
+            time.sleep(2)
+            scp.click_Btn_Continue()
+            time.sleep(2)
             my.seleccionar_Producto_Makeup()
-
 
         #Acá selecciono La pagina del producto(lapiz labial) para agregarlo a carrito e ir a la pagina de producto
         time.sleep(2)
@@ -147,7 +151,7 @@ class MakePurchase(unittest.TestCase):
         #Acá verifico que una vez comprado el producto, vuelva a la Landing Page (homepage)
         assert lp.verificar_Nombre_Landing_Page() == 'Welcome back Gonzalo'
         print("\n")
-        print(Fore.BLUE + "Estas en la página Home")
+        print(Fore.GREEN + "Estas en la página Home")
         time.sleep(2)
 
 

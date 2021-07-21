@@ -13,14 +13,18 @@ from POM.Pages.LandingPage import LandingPage
 from POM.Pages.LoginPage import LoginPage
 from POM.Pages.MyAccountPage import MyAccountPage
 import HtmlTestRunner
+import logging
+
 
 class LoginTest(unittest.TestCase):
+
 
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Chrome("C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Drivers\\chromedriver.exe")
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
+
 
 
 
@@ -40,6 +44,8 @@ class LoginTest(unittest.TestCase):
         print(x)
         assert x == 'Gonzalo'
         print("Estoy dentro de la página de My account")
+
+
 
 
     def test_Login_failed_incorrect_username(self):

@@ -11,7 +11,9 @@ class MyAccountPageLocators():
       makeup_btn = (By.CSS_SELECTOR, "#categorymenu>nav>ul>li:nth-child(3)>a")
       lips_option = (By.CSS_SELECTOR, "#categorymenu>nav>ul>li:nth-child(3)>div>ul:nth-child(1)>li:nth-child(4)>a")
       cart_option = (By.CSS_SELECTOR, "#main_menu_top>li:nth-child(3)>a>span")
-
+      skincare_btn = (By.XPATH, "//body/div[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[4]/a[1]")
+      welcomeback_btn = (By.CSS_SELECTOR, "#customer_menu_top>li>a>div")
+      logoff = (By.CSS_SELECTOR, "#customer_menu_top>li>ul>li:nth-child(10)")
 
 
 class MyAccountPage():
@@ -39,5 +41,13 @@ class MyAccountPage():
 
     def seleccionar_Cart_Option(self):
         self.driver.find_element(*MyAccountPageLocators.cart_option).click()
+
+    def seleccionar_Producto_SkinCare(self):
+        self.driver.find_element(*MyAccountPageLocators.skincare_btn).click()
+
+    def seleccionar_Logoff(self):
+        hover = ActionChains(self.driver).move_to_element(self.driver.find_element(*MyAccountPageLocators.welcomeback_btn))
+        hover.perform()
+        self.driver.find_element(*MyAccountPageLocators.logoff).click()
 
 

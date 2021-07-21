@@ -12,6 +12,13 @@ class ShoppingCartLocators():
     label_without_product = (By.XPATH, '//*[@class="contentpanel"]')
     label_with_product = (By.CSS_SELECTOR, "div.pull-left.coupon>table>tbody>tr:nth-child(1)>th")
     clean_shopping_cart = (By.CSS_SELECTOR, "table>tbody>tr:nth-child(2)>td:nth-child(7)>a")
+    list_of_products = (By.CSS_SELECTOR, "div.container-fluid.cart-info.product-list>table>tbody>tr>td:nth-child(7)>a")
+    btn_clean = (By.CSS_SELECTOR, "tbody>tr>td:nth-child(7)>a")
+    table = (By.TAG_NAME, "#cart>div>div.container-fluid.cart-info.product-list>table")
+    btn_continue = (By.CSS_SELECTOR, "#maincontainer>div>div>div>div>div>div>a")
+    filas = (By.CSS_SELECTOR, "#cart>div>div.container-fluid.cart-info.product-list>table>tbody>tr")
+
+
 
 
 
@@ -45,3 +52,28 @@ class ShoppingCartPage():
 
     def clean_Shopping_Cart(self):
         self.driver.find_element(*ShoppingCartLocators.clean_shopping_cart).click()
+
+    def click_Clean (self):
+        self.driver.find_element(*ShoppingCartLocators.btn_clean).click()
+
+    def clean_List_Of_Products(self):
+        #Esto es usando listas
+        elements = len(self.driver.find_elements(*ShoppingCartLocators.filas))
+        ele = self.driver.find_elements(*ShoppingCartLocators.table)
+        num = len(self.driver.find_elements(*ShoppingCartLocators.table))
+        for ele in range(1, elements):
+            self.driver.find_element(*ShoppingCartLocators.btn_clean).click()
+
+        # Esto para usar sin listas
+        # rows = len(self.driver.find_elements(*ShoppingCartLocators.btn_clean))
+        # for n in range(1, rows+1):
+        # self.driver.find_element(*ShoppingCartLocators.btn_clean).click()
+
+    def contar_Elementos_Eliminados(self):
+        rows = len(self.driver.find_elements(*ShoppingCartLocators.btn_clean))
+        return rows
+
+    def click_Btn_Continue(self):
+        self.driver.find_element(*ShoppingCartLocators.btn_continue).click()
+
+
