@@ -5,10 +5,10 @@ class LoginPageLocators():
     txt_password = (By.ID, "loginFrm_password")
     btn_sign_in = (By.CSS_SELECTOR, "#loginFrm>fieldset>button")
     label_incorrect_username = (By.CSS_SELECTOR, "#maincontainer>div>div>div>div.alert.alert-error.alert-danger")
-    check_box_register = (By.ID, "accountFrm_accountregister")
+    check_box_register = (By.CSS_SELECTOR, "#accountFrm_accountregister")
     btn_continue_register1 = (By.CSS_SELECTOR, ".btn.btn-orange.pull-right:nth-child(3)")
 
-
+#accountFrm_accountregister
 
 
 

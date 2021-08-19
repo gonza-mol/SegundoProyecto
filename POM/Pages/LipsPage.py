@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 
 
 class LipsPageLocators():
-    btn_AddCart1 = (By.CSS_SELECTOR, "div:nth-child(3)>div.thumbnail>div.pricetag.jumbotron>a>i")
+    btn_AddCart1 = (By.CSS_SELECTOR, "div:nth-child(1)>div.thumbnail>div.pricetag.jumbotron>a>i")
 
 
 class LipsPage():
