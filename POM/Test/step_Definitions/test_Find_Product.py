@@ -1,0 +1,64 @@
+from pytest_bdd.parsers import string
+from selenium import webdriver
+import unittest
+from functools import partial
+from pytest_bdd import scenarios, parsers, given, when, then, scenario
+from colorama import Fore, Back, Style
+import time
+from POM.Pages.LandingPage import LandingPage
+from POM.Pages.LoginPage import LoginPage
+from POM.Pages.ProductPage import ProductPage
+from POM.Pages.MyAccountPage import MyAccountPage
+import conftest
+import HtmlTestRunner
+import logging
+
+
+AUTOMATION_PAGE = 'https://automationteststore.com/'
+
+
+scenarios('../features/Find_Product.feature')
+
+
+@given('I am on login in the Automation test store page, and I want to search for a certain product')
+def step_Go_Login_Page_of_Automation_Test_Store(browser):
+    browser.get(AUTOMATION_PAGE)
+    time.sleep(2)
+    # ir a login page
+    lp = LandingPage(browser)
+    lp.click_Go_Login()
+    logpa = LoginPage(browser)
+    time.sleep(2)
+    # Esto permite el logueo
+    logpa.do_Login("gonza_mol", "Chicharito10")
+
+
+#@when("I type the product to search in the search engine, and I execute the search")
+@when(parsers.parse('I type the "{product}" to search in the search engine, and I execute the search'))
+def step_Search_Product(browser, product):
+    my = MyAccountPage(browser)
+    my.seleccionar_Búsqueda(product)
+
+
+
+@then(parsers.parse('I get a product "{pro}" and verify that it is the desired product'))
+def step_Verify_Product(browser, pro):
+    pp = ProductPage(browser)
+
+    try:
+        name = pp.verify_Existing_Product()
+        assert pro in name
+        print("Y el titulo encontrado es " + Fore.BLUE + name)
+
+    except:
+        print(Fore.BLUE +"No se ha encontrado un título que contenga la palabra buscada")
+
+
+
+
+
+
+
+if __name__ == '__main__':
+        unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(
+            output='C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Reports'), verbosity=2)

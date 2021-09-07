@@ -1,6 +1,7 @@
 import time
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from colorama import Fore, Back, Style
 
 
 class MyAccountPageLocators():
@@ -14,6 +15,9 @@ class MyAccountPageLocators():
       skincare_btn = (By.XPATH, "//body/div[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[4]/a[1]")
       welcomeback_btn = (By.CSS_SELECTOR, "#customer_menu_top>li>a>div")
       logoff = (By.CSS_SELECTOR, "#customer_menu_top>li>ul>li:nth-child(10)")
+      searchbox = (By.ID, "filter_keyword")
+      execute_search = (By.CSS_SELECTOR, "#search_form>div>div>i")
+      footer = (By.CSS_SELECTOR, "#footer>footer>section.footersocial>div>div")
 
 
 class MyAccountPage():
@@ -50,4 +54,19 @@ class MyAccountPage():
         hover.perform()
         self.driver.find_element(*MyAccountPageLocators.logoff).click()
 
+    def seleccionar_Búsqueda(self, product):
+        self.driver.find_element(*MyAccountPageLocators.searchbox).click()
+        self.driver.find_element(*MyAccountPageLocators.searchbox).send_keys(product)
+        self.driver.find_element(*MyAccountPageLocators.execute_search).click()
+
+    def contar_Footer_Component(self):
+        elements = len(self.driver.find_elements(*MyAccountPageLocators.footer))
+        return elements
+
+    def mostrar_Footer_Component(self):
+        #elements = self.driver.find_elements(*MyAccountPageLocators.footer)
+        ele = self.driver.find_elements(*MyAccountPageLocators.footer)
+        return ele
+        #for ele_foo in ele:
+           #print(ele_foo.text)
 

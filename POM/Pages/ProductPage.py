@@ -8,6 +8,7 @@ class ProductPageLocators():
     list_color = (By.CSS_SELECTOR, "#option305")
     qty = (By.CSS_SELECTOR, "#product_quantity")
     btn_AddCart2 = (By.CSS_SELECTOR, "#product>fieldset>div:nth-child(5)>ul>li>a")
+    title_product_searched = (By.CSS_SELECTOR, "#product_details>div>div:nth-child(2)>div>div>h1>span")
 
 
 
@@ -25,4 +26,5 @@ class ProductPage():
         self.driver.find_element(*ProductPageLocators.btn_AddCart2).click()
 
 
-
+    def verify_Existing_Product(self):
+        return self.driver.find_element(*ProductPageLocators.title_product_searched).text
