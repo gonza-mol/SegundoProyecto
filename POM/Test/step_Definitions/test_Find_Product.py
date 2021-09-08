@@ -33,18 +33,25 @@ def step_Go_Login_Page_of_Automation_Test_Store(browser):
     logpa.do_Login("gonza_mol", "Chicharito10")
 
 
-#@when("I type the product to search in the search engine, and I execute the search")
-@when(parsers.parse('I type the "{product}" to search in the search engine, and I execute the search'))
-def step_Search_Product(browser, product):
+
+@when(parsers.parse('I type the "{product}" to search in the search engine, and I execute the search with glass'))
+def step_Search_Product_With_Glass(browser, product):
     my = MyAccountPage(browser)
     my.seleccionar_Búsqueda(product)
+    my.ejecutar_Búsqueda_Glass()
 
+
+
+@when(parsers.parse('I type the "{miel}" to search in the search engine, and I execute the search with Enter keys'))
+def step_Search_Product_With_Enter(browser, miel):
+    my = MyAccountPage(browser)
+    my.ejecutar_Búsqueda_Enter(miel)
 
 
 @then(parsers.parse('I get a product "{pro}" and verify that it is the desired product'))
-def step_Verify_Product(browser, pro):
+def step_Verify_Product_French(browser, pro):
     pp = ProductPage(browser)
-
+    
     try:
         name = pp.verify_Existing_Product()
         assert pro in name
@@ -55,6 +62,13 @@ def step_Verify_Product(browser, pro):
 
 
 
+@then(parsers.parse('I dont get product "{miel}" and verify that it is the desired product'))
+def step_Verify_Product_Miel(browser, miel):
+    pp = ProductPage(browser)
+    #print(pp.verify_Title_Of_Product_Not_Fund())
+    name = pp.verify_Title_Of_Product_Not_Fund()
+    assert name == 'There is no product that matches the search criteria.'
+    print(Fore.BLUE + "El producto buscado no se ha encontrado, en la página, mostrando el siguiente mensaje \n" + name)
 
 
 
@@ -62,3 +76,5 @@ def step_Verify_Product(browser, pro):
 if __name__ == '__main__':
         unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(
             output='C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Reports'), verbosity=2)
+
+

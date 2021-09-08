@@ -2,6 +2,7 @@ import time
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from colorama import Fore, Back, Style
+from selenium.webdriver.common.keys import Keys
 
 
 class MyAccountPageLocators():
@@ -57,7 +58,15 @@ class MyAccountPage():
     def seleccionar_Búsqueda(self, product):
         self.driver.find_element(*MyAccountPageLocators.searchbox).click()
         self.driver.find_element(*MyAccountPageLocators.searchbox).send_keys(product)
+
+    def ejecutar_Búsqueda_Glass(self):
         self.driver.find_element(*MyAccountPageLocators.execute_search).click()
+
+
+    def ejecutar_Búsqueda_Enter(self, product):
+        self.driver.find_element(*MyAccountPageLocators.searchbox).click()
+        self.driver.find_element(*MyAccountPageLocators.searchbox).send_keys(product + Keys.RETURN)
+
 
     def contar_Footer_Component(self):
         elements = len(self.driver.find_elements(*MyAccountPageLocators.footer))
