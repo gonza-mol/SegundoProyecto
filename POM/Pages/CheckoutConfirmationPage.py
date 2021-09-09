@@ -22,6 +22,9 @@ class CheckoutConfirmationLocators():
     label_name_payment = (By.CSS_SELECTOR, "table.table.confirm_payment_options>tbody>tr>td:nth-child(1)")
     label_address_payment = (By.CSS_SELECTOR, "table.table.confirm_payment_options>tbody>tr>td:nth-child(2)")
     label_cash_delivery = (By.CSS_SELECTOR, "table.table.confirm_payment_options>tbody>tr>td:nth-child(3)")
+    label_order_id = (By.CSS_SELECTOR, "#maincontainer>div>div>div>div>section>p:nth-child(3)")
+    label_welcome = (By.CSS_SELECTOR, "#customer_menu_top>li>a>div")
+    label_order_history = (By.CSS_SELECTOR, "#customer_menu_top>li>ul>li:nth-child(6)>a>i")
 
 
 
@@ -79,3 +82,10 @@ class CheckoutConfirmationPage():
     def show_Cash_Deliveryt(self):
         return self.driver.find_element(*CheckoutConfirmationLocators.label_cash_delivery).text
 
+    def show_Order_Id(self):
+        return self.driver.find_element(*CheckoutConfirmationLocators.label_order_id).text
+
+    def Select_Order_History_Option(self):
+        hover = ActionChains(self.driver).move_to_element(self.driver.find_element(*CheckoutConfirmationLocators.label_welcome))
+        hover.perform()
+        self.driver.find_element(*CheckoutConfirmationLocators.label_order_history).click()
