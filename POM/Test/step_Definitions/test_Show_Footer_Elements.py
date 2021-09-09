@@ -46,5 +46,11 @@ def step_Count_Footer_Element(browser):
     print(Fore.BLUE+"la cantidad de elementos en el footer es: "+str(n))
     print(Fore.BLUE+"Los elementos del footer son:")
     m = account.mostrar_Footer_Component()
+    aux = 1
     for idx, ele_foo in enumerate(m):
-        print(idx, ele_foo.text)
+        if aux == 1:
+            print(idx, ele_foo.text[0:9])
+            aux=2
+        else:
+            print(idx, ele_foo.text[0:10])
+
