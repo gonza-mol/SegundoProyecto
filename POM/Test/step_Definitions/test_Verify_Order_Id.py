@@ -1,3 +1,4 @@
+import re
 import time
 import pytest
 import driver as driver
@@ -68,15 +69,19 @@ def step_Search_Order_Id(browser):
     ccp.do_Checkout_Confirmation()
     time.sleep(2)
     Order_id = ccp.show_Order_Id()
-    aux = Order_id[11:16]
+    #aux = Order_id[11:16]
     #print(aux)
+    Order_number = re.findall("[0-9]", Order_id)
+    Only_order_id = ''.join(Order_number)
+    print(Only_order_id)
 
     #Acá voy a ir a Order history y busco mi order_id recientemente creado
     ccp.Select_Order_History_Option()
     moh = My_Order_History(browser)
     #print(moh.Verify_Order_History())
-    aux1 = moh.Verify_Order_History()[10:15]
-    assert aux == aux1
+    #aux1 = moh.Verify_Order_History()[10:15]
+    aux1 = moh.Verify_Order_History()
+    assert Only_order_id in aux1
     print(Fore.GREEN+ "El id de la orden recientemente obtenida, coincide con el id último de mi historial, y es: "+moh.Verify_Order_History())
 
 
