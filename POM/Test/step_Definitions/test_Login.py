@@ -17,8 +17,6 @@ import logging
 
 
 AUTOMATION_PAGE = 'https://automationteststore.com/'
-
-
 scenarios('../features/Login.feature')
 
 

@@ -10,7 +10,7 @@ class ProductPageLocators():
     btn_AddCart2 = (By.CSS_SELECTOR, "#product>fieldset>div:nth-child(5)>ul>li>a")
     title_product_searched = (By.CSS_SELECTOR, "#product_details>div>div:nth-child(2)>div>div>h1>span")
     product_not_found = (By.CSS_SELECTOR, "#maincontainer>div>div>div>div>div:nth-child(4)")
-
+    btn_Add_Wish_List = (By.CSS_SELECTOR, "a.wishlist_add.btn.btn-large")
 
 
 class ProductPage():
@@ -32,3 +32,8 @@ class ProductPage():
 
     def verify_Title_Of_Product_Not_Fund (self):
         return self.driver.find_element(*ProductPageLocators.product_not_found).text
+
+    def Add_Wish_List(self):
+        self.driver.find_element(*ProductPageLocators.btn_Add_Wish_List).click()
+
+
