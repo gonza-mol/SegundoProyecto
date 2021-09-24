@@ -51,6 +51,15 @@ def step_AddProduct(browser):
     # Acá creo un objeto del  tipo de producto elegido, y selecciono el color, y la cantidad y verifico que coincido lo que pido
     pp = ProductPage(browser)
     time.sleep(5)
+    time.sleep(3)
+    try:
+        pp.Add_Wish_List()
+
+    except:
+        pp.Remove_Wish_List()
+        pp.Add_Wish_List()
+
+    time.sleep(3)
     pp.Add_Wish_List()
     time.sleep(5)
 

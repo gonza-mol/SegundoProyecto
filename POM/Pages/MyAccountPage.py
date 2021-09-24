@@ -19,6 +19,8 @@ class MyAccountPageLocators():
       searchbox = (By.ID, "filter_keyword")
       execute_search = (By.CSS_SELECTOR, "#search_form>div>div>i")
       footer = (By.CSS_SELECTOR, "#footer>footer>section.footersocial>div>div")
+      link_ContactUs = (By.CSS_SELECTOR, "div.pull-left>div>ul>li:nth-child(5)>a")
+
 
 
 class MyAccountPage():
@@ -78,4 +80,8 @@ class MyAccountPage():
         return ele
         #for ele_foo in ele:
            #print(ele_foo.text)
+
+    def seleccionar_ContactUs_Option(self):
+        self.driver.find_element(*MyAccountPageLocators.link_ContactUs).click()
+
 
