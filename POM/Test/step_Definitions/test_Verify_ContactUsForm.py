@@ -38,10 +38,10 @@ def step_Login(browser):
 def step_SendRequest(browser):
     account = MyAccountPage(browser)
     account.seleccionar_ContactUs_Option()
-    time.sleep(4)
+    time.sleep(2)
     cu = ContactUsPage(browser)
     print(cu.verificar_ContactUs_Form())
-    time.sleep(4)
+    time.sleep(2)
     assert cu.verificar_ContactUs_Form() == "Contact Us Form"
     print(Fore.GREEN + "Estoy en la página de Contact Us")
 
@@ -49,13 +49,13 @@ def step_SendRequest(browser):
 @when(parsers.parse('Fill form name "{name}", email "{email}", Enquiry "{message}"'))
 def step_FillForm(browser, name, email, message):
     cu = ContactUsPage(browser)
-    time.sleep(4)
+    time.sleep(2)
     cu.fill_FirstName(name)
-    time.sleep(4)
+    time.sleep(2)
     cu.fill_Email(email)
-    time.sleep(4)
+    time.sleep(2)
     cu.fill_Enquiry(message)
-    time.sleep(4)
+    time.sleep(2)
     cu.sendForm()
 
 
@@ -65,8 +65,27 @@ def step_Verify_successful_Sending_Request(browser):
     cu = ContactUsPage(browser)
     message = cu.Verify_Enquiry_Success()
     assert message == "Your enquiry has been successfully sent to the store owner!"
+    print(Fore.GREEN + "El formulario se ha enviado exitosamente")
 
 
 
-    if __name__ == '__main__':
-        unittest.main()
+@when("I do not complete any of the fields")
+def step_EmptyFields(browser):
+    cu = ContactUsPage(browser)
+    cu.sendForm()
+
+@then("I want to verify that the validation errors are displayed in each of the fields")
+def step_VerifyErrorValidation(browser):
+    cu = ContactUsPage(browser)
+    name = cu.get_FirstName()
+    email = cu.get_Email()
+    enquiry = cu.get_Enquiry()
+    assert name == "First name: is required field! Name must be between 3 and 32 characters!"
+    assert email == "Email: is required field! E-Mail Address does not appear to be valid!"
+    assert enquiry == "Enquiry: is required field! Enquiry must be between 10 and 3000 characters!"
+
+    print("Todos los mensajes de validación de campos mandatorios se están mostrando")
+    print(Fore.RED + "\n" + name)
+    print(Fore.RED + "\n" + email)
+    print(Fore.RED + "\n" + enquiry)
+    print("El formulario no ha podido ser enviado")
