@@ -34,7 +34,7 @@ def step_Login(browser):
 
 
 
-@when("I select the Contact Us option in the footer of the page,")
+@when("I select the Contact Us option in the footer of the page")
 def step_SendRequest(browser):
     account = MyAccountPage(browser)
     account.seleccionar_ContactUs_Option()
@@ -89,3 +89,7 @@ def step_VerifyErrorValidation(browser):
     print(Fore.RED + "\n" + email)
     print(Fore.RED + "\n" + enquiry)
     print("El formulario no ha podido ser enviado")
+
+    if __name__ == '__main__':
+        unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(
+            output='C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Reports'), verbosity=2)

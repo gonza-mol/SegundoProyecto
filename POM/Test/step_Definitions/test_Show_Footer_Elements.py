@@ -54,3 +54,7 @@ def step_Count_Footer_Element(browser):
         else:
             print(idx, ele_foo.text[0:10])
 
+
+
+if __name__ == '__main__':
+     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Reports'), verbosity=2)

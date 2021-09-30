@@ -73,7 +73,6 @@ def step_VerifyMyWishList(browser):
     assert product == wl.verify_product_added()
     print(Fore.GREEN+"El producto seleccionado "+product+" coincide con el de Mi lista de deseos  "+wl.verify_product_added())
 
-
 if __name__ == '__main__':
-    unittest.main()
+     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Reports'), verbosity=2)
 
