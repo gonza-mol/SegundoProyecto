@@ -13,12 +13,13 @@ from POM.Pages.LandingPage import LandingPage
 from POM.Pages.LoginPage import LoginPage
 from POM.Pages.MyAccountPage import MyAccountPage
 from POM.Pages.LipsPage import LipsPage
-from POM.Pages.ProductPage import ProductPage
+from POM.Pages import ProductPage
 from POM.Pages.ShoppingCartPage import ShoppingCartPage
 from POM.Pages.CheckoutConfirmationPage import CheckoutConfirmationPage
 from POM.Pages.My_Order_History import My_Order_History
 import HtmlTestRunner
 import logging
+
 
 
 AUTOMATION_PAGE = 'https://automationteststore.com/'
