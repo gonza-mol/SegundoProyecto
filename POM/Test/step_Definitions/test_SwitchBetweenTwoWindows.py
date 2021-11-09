@@ -47,7 +47,7 @@ def step_Login(browser):
 def step_GoNewWindow(browser, link):
     account = MyAccountPage(browser)
     if link.upper() == "F" or link.upper() == "T":
-        account.selectLinkFb(link)
+        account.selectLinkFborTw(link)
     else:
         if link.upper()=="L":
             print(Fore.GREEN + "\nEstás eligiendo la opción de Linkedin y no está contemplado, por eso te saco de la ejecución" + Fore.RESET)
@@ -77,4 +77,5 @@ def step_GoThePreviousWindow(browser):
     print("El número de ventana de Test Automation es: " + aux4)
     print("La url de la ventana de Test Automation es: " + browser.current_url)
     print("El nombre de la Tab de la ventana de Test Automation es: " + browser.title)
+    assert browser.title == "My Account"
 

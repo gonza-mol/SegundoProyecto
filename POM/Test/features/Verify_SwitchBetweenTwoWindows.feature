@@ -6,5 +6,5 @@ Feature: Switch Between two different windows a capture the url and title
 @Regression, @Sanity
   Scenario: Switch between two different windows and capture url and title
     Given I am on login in the Automation test store
-    When I click on the "l" link, and i capture the url and the title of the tab
+    When I click on the "t" link, and i capture the url and the title of the tab
     Then I go back to the initial tab and capture the url and the title of the tab

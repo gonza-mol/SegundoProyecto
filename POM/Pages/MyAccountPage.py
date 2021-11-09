@@ -165,7 +165,7 @@ class MyAccountPage():
         return self.driver.find_element(*MyAccountPageLocators.alertMessageAddressBook)
 
 
-    def selectLinkFb(self, link):
+    def selectLinkFborTw(self, link):
         if link.upper() == "F":
             self.driver.find_element(*MyAccountPageLocators.linkFb).click()
         elif link.upper() == "T":
