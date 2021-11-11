@@ -40,6 +40,8 @@ class MyAccountPageLocators():
       linkFb = (By.CSS_SELECTOR, "div.block_8>div>div>a.facebook")
       linkTw= (By.CSS_SELECTOR, "div.block_8>div>div>a.twitter")
       linkLi=(By.CSS_SELECTOR, "div.block_8>div>div>a.linkedin")
+      btnContribute = (By.CSS_SELECTOR, "div.pull-right.mr20.mt5>div>a>img")
+      linkAbanteCard = (By.CSS_SELECTOR, "div.pull-right.align_center>a")
 
 class MyAccountPage():
 
@@ -172,3 +174,8 @@ class MyAccountPage():
             self.driver.find_element(*MyAccountPageLocators.linkTw).click()
 
 
+    def selectBtnContribute(self):
+        self.driver.find_element(*MyAccountPageLocators.btnContribute).click()
+
+    def selectLinkAbanteCard(self):
+        self.driver.find_element(*MyAccountPageLocators.linkAbanteCard).click()

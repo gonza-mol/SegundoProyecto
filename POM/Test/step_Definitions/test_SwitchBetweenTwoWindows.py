@@ -79,3 +79,9 @@ def step_GoThePreviousWindow(browser):
     print("El nombre de la Tab de la ventana de Test Automation es: " + browser.title)
     assert browser.title == "My Account"
 
+
+
+if __name__ == '__main__':
+        unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(
+            output='C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Reports'), verbosity=2)
+
