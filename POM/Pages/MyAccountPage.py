@@ -42,6 +42,7 @@ class MyAccountPageLocators():
       linkLi=(By.CSS_SELECTOR, "div.block_8>div>div>a.linkedin")
       btnContribute = (By.CSS_SELECTOR, "div.pull-right.mr20.mt5>div>a>img")
       linkAbanteCard = (By.CSS_SELECTOR, "div.pull-right.align_center>a")
+      testimonials = (By.CSS_SELECTOR, "#testimonialsidebar>div>ul>li")
 
 class MyAccountPage():
 
@@ -179,3 +180,6 @@ class MyAccountPage():
 
     def selectLinkAbanteCard(self):
         self.driver.find_element(*MyAccountPageLocators.linkAbanteCard).click()
+
+    def getTestimonials(self):
+        return self.driver.find_elements(*MyAccountPageLocators.testimonials)
