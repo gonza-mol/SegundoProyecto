@@ -1,24 +1,7 @@
-import re
 import time
-import pytest
-import driver as driver
-from pytest_bdd.parsers import string
-from selenium import webdriver
-import unittest
-from functools import partial
 from pytest_bdd import scenarios, given, when, then
 from colorama import Fore, Back, Style
-from selenium.common.exceptions import NoSuchElementException
-from POM.Pages.LandingPage import LandingPage
-from POM.Pages.LoginPage import LoginPage
 from POM.Pages.MyAccountPage import MyAccountPage
-from POM.Pages.LipsPage import LipsPage
-from POM.Pages import ProductPage
-from POM.Pages.ShoppingCartPage import ShoppingCartPage
-from POM.Pages.CheckoutConfirmationPage import CheckoutConfirmationPage
-from POM.Pages.My_Order_History import My_Order_History
-import HtmlTestRunner
-import logging
 
 
 
@@ -54,3 +37,4 @@ def step_VerifyAndPrintTestimonials(t, browser):
            print(Fore.GREEN + "El título del " + lista1[n] + " Testimonials es: " + Fore.RESET + test.text)
            n = n + 1
            time.sleep(7)
+

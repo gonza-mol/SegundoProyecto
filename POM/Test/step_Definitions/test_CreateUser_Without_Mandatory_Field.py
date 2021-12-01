@@ -1,22 +1,11 @@
 import time
-import pytest
-import driver as driver
-from pytest_bdd.parsers import string
-from selenium import webdriver
 import unittest
 from functools import partial
 from pytest_bdd import scenarios, given, when, then
-from colorama import Fore, Back, Style
-
-
-from POM.Pages.MyAccountPage import MyAccountPage
 from POM.Pages.CreateUserPage import CreateUserPage
 from POM.Pages.LandingPage import LandingPage
 from POM.Pages.LoginPage import LoginPage
-
-import conftest
 import HtmlTestRunner
-import logging
 
 
 AUTOMATION_PAGE = 'https://automationteststore.com/'

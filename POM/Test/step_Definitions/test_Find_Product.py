@@ -1,7 +1,4 @@
-from pytest_bdd.parsers import string
-from selenium import webdriver
 import unittest
-from functools import partial
 from pytest_bdd import scenarios, parsers, given, when, then, scenario
 from colorama import Fore, Back, Style
 import time
@@ -9,9 +6,8 @@ from POM.Pages.LandingPage import LandingPage
 from POM.Pages.LoginPage import LoginPage
 from POM.Pages.ProductPage import ProductPage
 from POM.Pages.MyAccountPage import MyAccountPage
-import conftest
 import HtmlTestRunner
-import logging
+
 
 
 AUTOMATION_PAGE = 'https://automationteststore.com/'

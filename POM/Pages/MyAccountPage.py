@@ -1,7 +1,7 @@
 import time
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
-from colorama import Fore, Back, Style
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.keys import Keys
 
 
@@ -30,7 +30,7 @@ class MyAccountPageLocators():
       viewFrenchBook = (By.CSS_SELECTOR, "div.thumbnail>a>img")
       paperback_option = (By.CSS_SELECTOR, "#categorymenu>nav>ul>li:nth-child(8)>div>ul:nth-child(1)>li:nth-child(2)>a")
       menuOption = (By.CSS_SELECTOR, "#categorymenu>nav>ul>li")
-      box_Manage_Address_Book = (By.CSS_SELECTOR, "div.col-md-9.col-xs-12.mt20>div>ul>li:nth-child(3)>a")
+      box_Manage_Book = (By.CSS_SELECTOR, "div.col-md-9.col-xs-12.mt20>div>ul>li:nth-child(3)>a")
       quantityOfAddressBook = (By.CSS_SELECTOR, "div.col-md-9.col-xs-12.mt20>div>ul>li:nth-child(3)>a>span")
       btnEditOptionaddressBook = (By.CSS_SELECTOR, "td.pull-right>button")
       txtAddress2 = (By.CSS_SELECTOR, "#AddressFrm_address_2")
@@ -43,6 +43,14 @@ class MyAccountPageLocators():
       btnContribute = (By.CSS_SELECTOR, "div.pull-right.mr20.mt5>div>a>img")
       linkAbanteCard = (By.CSS_SELECTOR, "div.pull-right.align_center>a")
       testimonials = (By.CSS_SELECTOR, "#testimonialsidebar>div>ul>li")
+      dropDownOrderByNameAZ = (By.ID, "sort")
+      listOfPaperback = (By.CSS_SELECTOR, "div.thumbnails.grid.row.list-inline>div")
+      nameOfPaperback = (By.CSS_SELECTOR, "div.fixed_wrapper>div>a")
+      bannerHome = (By.CSS_SELECTOR, "#banner_slides>div")
+      titleOfBanner1 = (By.CSS_SELECTOR, "#banner_slides>div:nth-child(1)>p>span")
+      titleOfBanner2 = (By.CSS_SELECTOR, "#banner_slides>div:nth-child(2)>p>span")
+      titleOfBanner3 = (By.CSS_SELECTOR, "#banner_slides>div:nth-child(3)>p>span")
+      allBoxes = (By.CSS_SELECTOR, "div.col-md-9.col-xs-12.mt20>div>ul>li")
 
 class MyAccountPage():
 
@@ -143,7 +151,7 @@ class MyAccountPage():
 
 
     def selectBoxManageAddressBook(self):
-        self.driver.find_element(*MyAccountPageLocators.box_Manage_Address_Book).click()
+        self.driver.find_element(*MyAccountPageLocators.box_Manage_Book).click()
 
     def getQuantityOfAddressBook(self):
         return self.driver.find_element(*MyAccountPageLocators.quantityOfAddressBook).text
@@ -183,3 +191,39 @@ class MyAccountPage():
 
     def getTestimonials(self):
         return self.driver.find_elements(*MyAccountPageLocators.testimonials)
+
+    def selectOrderByNameA_Z(self, criteria):
+        sel = Select(self.driver.find_element(*MyAccountPageLocators.dropDownOrderByNameAZ))
+        sel.select_by_visible_text(criteria)
+
+    def getListOfPaperback(self):
+        return self.driver.find_elements(*MyAccountPageLocators.listOfPaperback)
+
+    def getNameOfPaperback(self):
+        title = self.driver.find_elements(*MyAccountPageLocators.nameOfPaperback)
+        return title
+
+    def getBannersHome(self):
+        return self.driver.find_elements(*MyAccountPageLocators.bannerHome)
+
+    def getTitleBanner1(self):
+        return self.driver.find_elements(*MyAccountPageLocators.titleOfBanner1)
+
+    def getTitleBanner2(self):
+        return self.driver.find_elements(*MyAccountPageLocators.titleOfBanner2)
+
+    def getTitleBanner3(self):
+        return self.driver.find_elements(*MyAccountPageLocators.titleOfBanner3)
+
+    def select_Hover_ManageAddressBooks(self):
+        hover = ActionChains(self.driver).move_to_element(self.driver.find_element(*MyAccountPageLocators.box_Manage_Book))
+        hover.perform()
+
+    def getBoxManageBooks(self):
+        return self.driver.find_element(*MyAccountPageLocators.box_Manage_Book)
+
+    def getAllBoxes(self):
+        return self.driver.find_elements(*MyAccountPageLocators.allBoxes)
+
+    def getIndividualBox(self, num):
+        return self.driver.find_element(By.CSS_SELECTOR, "div.col-md-9.col-xs-12.mt20>div>ul>li:nth-child("+str(num)+")>a")
