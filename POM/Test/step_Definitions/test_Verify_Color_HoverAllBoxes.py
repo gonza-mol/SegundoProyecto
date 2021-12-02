@@ -37,6 +37,7 @@ def step_DoHover(browser):
     n = 1
     for i in box:
         aux = account.getIndividualBox(n)
+        assert 'rgba(245, 245, 245, 1)' in aux.value_of_css_property('background-color')
         hover = ActionChains(browser).move_to_element(aux)
         hover.perform()
         assert 'rgba(242, 92, 39, 1)' in aux.value_of_css_property('background-color')
